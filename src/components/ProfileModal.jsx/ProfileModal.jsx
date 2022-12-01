@@ -13,20 +13,23 @@ function ProfileModal({ modalOpened, setModalOpened, data }) {
     const [profileImage, setProfileImage] = useState(null);
     const [coverImage, setCoverImage] = useState(null);
     const dispatch = useDispatch();
-    const params = useParams();
+    const param = useParams();
     const { user } = useSelector((state) => state.authReducer.authData);
-    const HandleChange = (e) => {
+
+    const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
+
     const onImageChange = (e) => {
         if (e.target.files && e.target.files[0]) {
             let img = e.target.files[0];
             e.target.name === "profileImage" ? setProfileImage(img) : setCoverImage(img);
         }
     };
+
     const HandleSubmit = (e) => {
         e.preventDefault();
-        const UserData = new FormData;
+        const UserData = formData;
         if (profileImage) {
             const data = new FormData();
             const fileName = Date.now() + profileImage.name;
@@ -53,7 +56,7 @@ function ProfileModal({ modalOpened, setModalOpened, data }) {
                 console.log(err);
             }
         }
-        dispatch(updateUser(params.id, UserData));
+        dispatch(updateUser(param.id, UserData));
         setModalOpened(false);
     };
 
@@ -78,18 +81,18 @@ function ProfileModal({ modalOpened, setModalOpened, data }) {
                     <input
                         type="text"
                         className="infoInput"
-                        name="firstName"
+                        name="firstname"
                         placeholder="First Name"
-                        onChange={HandleChange}
+                        onChange={handleChange}
                         value={formData.firstName}
                     />
 
                     <input
                         type="text"
                         className="infoInput"
-                        name="lastName"
+                        name="lastname"
                         placeholder="Last Name"
-                        onChange={HandleChange}
+                        onChange={handleChange}
                         value={formData.lastName}
                     />
                 </div>
@@ -100,7 +103,7 @@ function ProfileModal({ modalOpened, setModalOpened, data }) {
                         className="infoInput"
                         name="profession"
                         placeholder="Profession"
-                        onChange={HandleChange}
+                        onChange={handleChange}
                         value={formData.profession}
                     />
                 </div>
@@ -111,7 +114,7 @@ function ProfileModal({ modalOpened, setModalOpened, data }) {
                         className="infoInput"
                         name="livesin"
                         placeholder="LIves in"
-                        onChange={HandleChange}
+                        onChange={handleChange}
                         value={formData.livesin}
                     />
                 </div>
@@ -122,7 +125,7 @@ function ProfileModal({ modalOpened, setModalOpened, data }) {
                         className="infoInput"
                         name="Hobbies"
                         placeholder="Hobbies"
-                        onChange={HandleChange}
+                        onChange={handleChange}
                         value={formData.Hobbies}
                     />
                 </div>
