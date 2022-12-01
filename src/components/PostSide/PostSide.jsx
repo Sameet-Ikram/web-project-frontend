@@ -3,12 +3,12 @@ import Posts from '../Posts/Posts'
 import PostShare from '../PostShare/PostShare'
 import './PostSide.css'
 
-const PostSide = () => {
+const PostSide = ({ data }) => {
     return (
-        <div className="PostSide">
+        <div className="PostSide" style={{ height: data  }}>
             <PostShare />
             <Posts />
-        </div>
+        </div >
     )
 }
 

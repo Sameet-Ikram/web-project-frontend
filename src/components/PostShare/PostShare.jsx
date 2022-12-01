@@ -6,7 +6,6 @@ import { UilPlayCircle } from "@iconscout/react-unicons";
 import { UilLocationPoint } from "@iconscout/react-unicons";
 import { UilSchedule } from "@iconscout/react-unicons";
 import { UilTimes } from "@iconscout/react-unicons";
-import { createElement } from "react";
 
 
 const PostShare = () => {
@@ -22,17 +21,8 @@ const PostShare = () => {
         }
     };
     const onEventChange = () => {
-        const d = document.getElementById("eventcreate");
-        var input = document.createElement("input");
-        input.type = "text";
-        input.id = "ename"
-        input.className = "eventinput"
-        var input2 = document.createElement("input");
-        input2.type = "text";
-        input2.id = "edate"
-        input2.className = "eventinput"
-        d.appendChild(input);
-        d.appendChild(input2); // put it into the DOM
+        const d = document.getElementById("AddEvent");
+        d.style.display = "block";
     };
     return (
         <div className="PostShare">
@@ -68,8 +58,11 @@ const PostShare = () => {
                         />
                     </div>
                 </div>
-                <div id="eventcreate">
-
+                <div id="AddEvent" style={{ display: "none" }}>
+                    <input type="text" id="ename" className="eventinput" placeholder="Name" />
+                    <input type="text" id="etype" className="eventinput" placeholder="Type" />
+                    <input type="text" id="elocation" className="eventinput" placeholder="Location" />
+                    <input type="text" id="edate" className="eventinput" placeholder="Date" />
                 </div>
                 {image && (
 

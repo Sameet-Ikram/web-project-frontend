@@ -35,6 +35,8 @@ const EventPost = ({ data }) => {
                 <span> {data.eventype}</span>
                 <br />
                 <span> {data.eventdate}</span>
+                <br />
+                <span> {data.eventlocation}</span>
             </div>
             <div>
                 <button className='button'>Invite</button>

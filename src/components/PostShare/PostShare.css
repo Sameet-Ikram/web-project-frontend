@@ -92,11 +92,19 @@
 }
 
 .eventinput {
-    display: flex;
-    flex-direction: column;
-    margin: 4px;
+    background-color: var(--inputColor);
+    border-style: solid;
+    outline: none;
+    width: 10rem;
+    margin: 5px;
+    font-size: 16px;
+    padding: 2px;
 }
 
-#eventcreate {
-    position: relative;
+#AddEvent {
+    display: flex;
+    flex-direction: column;
+    background-color: transparent;
+    border-radius: 10px;
+    padding: 5px;
 }

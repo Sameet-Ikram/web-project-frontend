@@ -31,16 +31,22 @@ export const PostsData = [
     {
         eventname: "Salena Gomez",
         eventype: "At Archery Festival",
+        eventdate: "At Archery Festival",
+        eventlocation: "At Archery Festival",
         datatype: 'eventt'
     },
     {
         eventname: "Salena Gomez",
         eventype: "At Archery Festival",
+        eventdate: "At Archery Festival",
+        eventlocation: "At Archery Festival",
         datatype: 'eventt'
     },
     {
         eventname: "Salena Gomez",
         eventype: "At Archery Festival",
+        eventdate: "At Archery Festival",
+        eventlocation: "At Archery Festival",
         datatype: 'eventt'
     }
 ]

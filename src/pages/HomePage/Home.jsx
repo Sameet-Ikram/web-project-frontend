@@ -8,7 +8,7 @@ const Home = () => {
     return (
         <div className="Home">
             <Profileside />
-            <PostSide />
+            <PostSide data={1000} />
             <RightSide />
         </div >
     )

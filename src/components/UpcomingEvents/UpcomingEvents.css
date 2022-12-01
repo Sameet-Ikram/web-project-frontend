@@ -27,27 +27,18 @@
     font-size: 12px;
 }
 
-.Search-Boxes {
-    display: flex;
-    flex-direction: column;
-    padding: 1rem;
-    border-radius: 1rem;
-}
 
 .SearchOptions {
     display: flex;
-    flex-direction: row;
-    background-color: var(--shedule);
-    border-radius: 1rem;
+    flex-direction: column;
 }
 
 .s-button {
-    position: relative;
-    display: flex;
-    margin: 1rem;
+    width: 5rem;
+    height: 2rem;
+    margin-top: 1rem;
 }
 
 .selectbox {
-    font-weight: bold;
     font-size: 14px;
 }
