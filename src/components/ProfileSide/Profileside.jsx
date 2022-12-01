@@ -6,7 +6,7 @@ import './Profileside.css'
 const Profileside = ({ data }) => {
     return (
         <div className="ProfileSide">
-            <ProfileCard />
+            <ProfileCard location={"homepage"} />
             <FollowersCard />
         </div>
     )
