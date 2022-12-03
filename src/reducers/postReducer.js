@@ -7,6 +7,12 @@ const postReducer = (state = { posts: [], loading: false, error: false, uploadin
             return { ...state, posts: [action.data, ...state.posts], uploading: false, error: false };
         case "UPLOAD_FAIL":
             return { ...state, uploading: false, error: true };
+        case "RETRIEVING_START":
+            return { ...state, loading: true, error: false };
+        case "RETRIEVEING_SUCCESFULL":
+            return { ...state, posts: action.data, loading: false, error: false };
+        case "RETRIEVING_FAILED":
+            return { ...state, loading: false, error: true };
         default:
             return state;
     }

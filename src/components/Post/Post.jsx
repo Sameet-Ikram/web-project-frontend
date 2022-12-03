@@ -9,12 +9,14 @@ import { useState } from 'react'
 import { likePost } from '../../api/PostRequest'
 
 const ImagePost = ({ data }) => {
+
     const { user } = useSelector((state) => state.authReducer.authData);
     const [liked, setLiked] = useState(data.likes.includes(user._id));
+
     const [likes, setLikes] = useState(data.likes.length);
     const handlelike = () => {
-        setLiked((prev) => !prev);
         likePost(data._id, user._id);
+        setLiked((prev) => !prev);
         liked ? setLikes((prev) => prev - 1) : setLikes((prev) => prev + 1);
     };
     return (
@@ -41,8 +43,8 @@ const EventPost = ({ data }) => {
     const [liked, setLiked] = useState(data.likes.includes(user._id));
     const [likes, setLikes] = useState(data.likes.length);
     const handlelike = () => {
-        setLiked((prev) => !prev);
         likePost(data._id, user._id);
+        setLiked((prev) => !prev);
         liked ? setLikes((prev) => prev - 1) : setLikes((prev) => prev + 1);
     };
     return (

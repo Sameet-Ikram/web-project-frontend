@@ -4,9 +4,9 @@ import { UilPen } from "@iconscout/react-unicons";
 import ProfileModal from "../ProfileModal.jsx/ProfileModal";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { useEffect } from "react";
 import * as UserApi from "../../api/UserRequest.js";
 import { logOut } from "../../actions/AuthAction";
+import { useEffect } from "react";
 
 const InfoCard = () => {
     const [modalOpened, setModalOpened] = useState(false);

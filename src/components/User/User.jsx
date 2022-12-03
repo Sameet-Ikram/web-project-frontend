@@ -6,6 +6,7 @@ import { useState } from 'react';
 
 const User = ({ person }) => {
 
+
     const { user } = useSelector((state) => state.authReducer.authData);
 
     const [following, setFollowing] = useState(person.followers.includes(user._id) ? true : false);
