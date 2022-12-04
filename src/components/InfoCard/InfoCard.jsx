@@ -7,6 +7,7 @@ import { useParams } from "react-router-dom";
 import * as UserApi from "../../api/UserRequest.js";
 import { logOut } from "../../actions/AuthAction";
 import { useEffect } from "react";
+import { clearPosts } from "../../actions/postAction";
 
 const InfoCard = () => {
     const [modalOpened, setModalOpened] = useState(false);
@@ -32,10 +33,12 @@ const InfoCard = () => {
     }, [user]);
     const handleLogOut = () => {
         dispatch(logOut());
+        dispatch(clearPosts());
     };
     return (
         <div className="InfoCard">
             <div className="infoHead">
+                
                 <h4>Profile Info</h4>
                 {profileUserId === user._id ? (<div>
                     <UilPen

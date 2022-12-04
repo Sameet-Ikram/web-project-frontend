@@ -6,7 +6,8 @@ import Heart from '../../img/like.png'
 import NotLike from '../../img/notlike.png'
 import { useSelector } from 'react-redux'
 import { useState } from 'react'
-import { likePost } from '../../api/PostRequest'
+import { likePost, interestPost } from '../../api/PostRequest'
+import { useDispatch } from 'react-redux'
 
 const ImagePost = ({ data }) => {
 
@@ -19,6 +20,8 @@ const ImagePost = ({ data }) => {
         setLiked((prev) => !prev);
         liked ? setLikes((prev) => prev - 1) : setLikes((prev) => prev + 1);
     };
+
+
     return (
         <div className="Post">
             <img src={data.image ? "http://localhost:5000/images/" + data.image : ""} alt="" />
@@ -39,14 +42,28 @@ const ImagePost = ({ data }) => {
 }
 
 const EventPost = ({ data }) => {
+
     const { user } = useSelector((state) => state.authReducer.authData);
     const [liked, setLiked] = useState(data.likes.includes(user._id));
+    const [interested, setInterested] = useState(data.interest.includes(user._id));
     const [likes, setLikes] = useState(data.likes.length);
+
+    const dispatch = useDispatch();
     const handlelike = () => {
         likePost(data._id, user._id);
         setLiked((prev) => !prev);
         liked ? setLikes((prev) => prev - 1) : setLikes((prev) => prev + 1);
     };
+
+    const handleInterest = () => {
+
+        interestPost(data._id, user._id, data.poststars);
+        // user.stars += data.poststars;
+        // dispatch({ type: "INCREASE_STARS", data: user });
+        setInterested((prev) => !prev);
+    };
+
+
     return (
         <div className="Post">
             <h3>Event</h3>
@@ -74,17 +91,17 @@ const EventPost = ({ data }) => {
                 <span> {data.eventlocation}</span>
             </div>
             <div>
-                <button className='button'>Invite</button>
+                <button className='button fc-button'>Invite</button>
             </div>
             <div>
-                <button className='button'>Interested</button>
+                <button className={interested ? 'button fc-button UnfollowButton' : 'button fc-button'} onClick={handleInterest}> {interested ? "Interested" : "Interest"}</button>
             </div>
         </div>
     )
 }
 
 const Post = ({ data }) => {
-    const { user } = useSelector((state) => state.authReducer.authData);
+
     return (
         <div>
             {data.datatype === "imagepost" ? <ImagePost data={data} /> : <EventPost data={data} />}

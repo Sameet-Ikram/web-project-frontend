@@ -1,12 +1,21 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { useEffect, useState } from 'react';
 import "./ProfileCard.css";
 
 const ProfileCard = ({ location }) => {
 
     const { user } = useSelector((state) => state.authReducer.authData);
     const posts = useSelector((state) => state.postReducer.posts);
+    let [stars, setStars] = useState(user.stars);
+    let [rank, setRank] = useState(user.rank);
+    useEffect(() => {
+        setStars(user.stars);
+        setRank(user.rank);
+    }, [])
+
+
     return (
         <div className="ProfileCard">
             <div className="ProfileImages">
@@ -17,7 +26,8 @@ const ProfileCard = ({ location }) => {
             <div className="ProfileName">
                 <span>{user.firstname} {user.lastname}</span>
                 <span>{user.profession ? user.profession : "write your profession"}</span>
-                <span>Stars: {user.stars ? user.stars : "0"}</span>
+                <span>Rank: {rank}</span>
+                <span>Stars: {stars}</span>
             </div>
 
             <div className="followStatus">

@@ -49,10 +49,13 @@ const PostShare = () => {
         };
         if (document.getElementById("AddEvent").style.display === "block") {
 
-            newPost.eventtype = document.getElementById("etype").value;
-            newPost.eventdate = document.getElementById("edate").value;
+            newPost.eventtype = document.getElementById("type").value;
+            let d = document.getElementById("edate").value;
+            var date = new Date(d);
+            newPost.eventdate = date;
             newPost.eventname = document.getElementById("ename").value;
-            newPost.eventlocation = document.getElementById("elocation").value;
+            newPost.eventlocation = document.getElementById("city").value;
+            newPost.poststars = document.getElementById("estars").value;
             newPost.datatype = "eventt";
         }
         else {
@@ -118,9 +121,23 @@ const PostShare = () => {
                 </div>
                 <div id="AddEvent" style={{ display: "none" }}>
                     <input type="text" id="ename" className="eventinput" placeholder="Name" />
-                    <input type="text" id="etype" className="eventinput" placeholder="Type" />
-                    <input type="text" id="elocation" className="eventinput" placeholder="Location" />
-                    <input type="text" id="edate" className="eventinput" placeholder="Date" />
+                    <input type="date" id="edate" className="eventinput" placeholder="Date" />
+                    <input type="text" id="estars" className="eventinput" placeholder="Stars" />
+                    <div>
+                        <span>City:</span><select name="Cities" id="city" className='selectbox' defaultValue={""}>
+                            <option value="Islamabad">Islamabad</option>
+                            <option value="Lahore">Lahore</option>
+                            <option value="Karachi">Karachi</option>
+                        </select>
+                    </div>
+                    <div>
+                        <span>Type:</span><select name="Type" id="type" className='selectbox' defaultValue={""}>
+                            <option value="Public Talk">Public Talk</option>
+                            <option value="Orphanage Visit">Orphanage Visit</option>
+                            <option value="Plantation Drive">Plantation Drive</option>
+                            <option value="Professional Talk">Professional Talk</option>
+                        </select>
+                    </div>
                 </div>
                 {image && (
 

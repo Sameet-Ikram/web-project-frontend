@@ -1,5 +1,5 @@
 import React from 'react'
-import { useDispatch } from "react-redux";
+import { useDispatch } from 'react-redux';
 import { followUser, unfollowUser } from '../../actions/userAction';
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
@@ -12,6 +12,7 @@ const User = ({ person }) => {
     const [following, setFollowing] = useState(person.followers.includes(user._id) ? true : false);
 
     const dispatch = useDispatch();
+
     const handleFollow = () => {
 
         following ?
@@ -31,10 +32,10 @@ const User = ({ person }) => {
                     <span>{person.username}</span>
                 </div>
             </div>
-            <button className='button fc-button' onClick={handleFollow}>
+            <button className={following ? 'button fc-button UnfollowButton' : 'button fc-button'} onClick={handleFollow}>
                 {following ? "Unfollow" : "Follow"}
             </button>
-        </div>
+        </div >
     )
 }
 
