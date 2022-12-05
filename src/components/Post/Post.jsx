@@ -59,10 +59,10 @@ const EventPost = ({ data }) => {
         liked ? setLikes((prev) => prev - 1) : setLikes((prev) => prev + 1);
     };
 
-    const handleInterest = () => {
+    const handleInterest = async () => {
 
-        dispatch(interestPost(data._id, user._id, data.poststars));
-        dispatch({ type: "INCREASE_STARS", stars: user.stars + data.poststars });
+        await interestPost(data._id, user._id, data.poststars);
+        interested ? dispatch({ type: "INCREASE_STARS", data: data.poststars }) : dispatch({ type: "DECREASE_STARS", data: data.poststars });
         setInterested((prev) => !prev);
     };
 

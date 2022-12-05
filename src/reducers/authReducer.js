@@ -29,7 +29,16 @@ const authReducer = (state = { authData: null, loading: false, error: false, upd
             return { ...state, authData: { ...state.authData, user: { ...state.authData.user, following: [...state.authData.user.following.filter((personId) => personId !== action.data)] } } }
 
         case "INCREASE_STARS":
-            return { ...state, authData: { ...state.authData, user: { ...state.authData.user, stars: action.stars } } }
+            let newstars = state.authData.user.stars + action.data;
+            return { ...state, authData: { ...state.authData, user: { ...state.authData.user, stars: newstars } } }
+
+        case "DECREASE_STARS":
+            let newstars2 = state.authData.user.stars - action.data;
+            if (newstars2 < 0) {
+                newstars2 = 0;
+            }
+            return { ...state, authData: { ...state.authData, user: { ...state.authData.user, stars: newstars2 } } }
+
         default:
             return state;
     }

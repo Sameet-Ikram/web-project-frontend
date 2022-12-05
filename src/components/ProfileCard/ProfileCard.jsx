@@ -10,9 +10,18 @@ const ProfileCard = ({ location }) => {
     const posts = useSelector((state) => state.postReducer.posts);
     let [stars, setStars] = useState(user.stars);
     let [rank, setRank] = useState(user.rank);
+
     useEffect(() => {
         setStars(user.stars);
-        setRank(user.rank);
+        if (stars >= 100) {
+            setRank("Gold");
+        }
+        else if (stars >= 50) {
+            setRank("Silver");
+        }
+        else if (stars >= 10) {
+            setRank("Bronze");
+        }
     }, [])
 
 
