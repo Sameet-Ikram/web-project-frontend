@@ -8,6 +8,8 @@ import { useSelector } from 'react-redux'
 import { useState } from 'react'
 import { likePost, interestPost } from '../../api/PostRequest'
 import { useDispatch } from 'react-redux'
+import { inviteUser } from "../../actions/userAction";
+import { useParams } from 'react-router-dom';
 
 const ImagePost = ({ data }) => {
 
@@ -47,8 +49,10 @@ const EventPost = ({ data }) => {
     const [liked, setLiked] = useState(data.likes.includes(user._id));
     const [interested, setInterested] = useState(data.interest.includes(user._id));
     const [likes, setLikes] = useState(data.likes.length);
+    const [invited, setInvited] = useState(data.invited.includes(user._id));
 
     const dispatch = useDispatch();
+
     const handlelike = () => {
         likePost(data._id, user._id);
         setLiked((prev) => !prev);
@@ -57,12 +61,16 @@ const EventPost = ({ data }) => {
 
     const handleInterest = () => {
 
-        interestPost(data._id, user._id, data.poststars);
+        dispatch(interestPost(data._id, user._id, data.poststars));
         // user.stars += data.poststars;
         // dispatch({ type: "INCREASE_STARS", data: user });
         setInterested((prev) => !prev);
     };
 
+    const handleInvite = () => {
+        dispatch(inviteUser(user._id, data._id));
+        setInvited((prev) => !prev);
+    };
 
     return (
         <div className="Post">
@@ -91,7 +99,7 @@ const EventPost = ({ data }) => {
                 <span> {data.eventlocation}</span>
             </div>
             <div>
-                <button className='button fc-button'>Invite</button>
+                <button className='button fc-button' onClick={handleInvite}>{invited ? "Invited" : "Invite"}</button>
             </div>
             <div>
                 <button className={interested ? 'button fc-button UnfollowButton' : 'button fc-button'} onClick={handleInterest}> {interested ? "Interested" : "Interest"}</button>

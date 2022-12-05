@@ -10,6 +10,17 @@ export const updateUser = (id, formData) => async (dispatch) => {
     }
 }
 
+export const inviteUser = (id, postid) => async (dispatch) => {
+
+    try {
+        const { data } = await UserApi.inviteUser(id, postid);
+        dispatch({ type: "INVITING_SUCCESS", data: data });
+    } catch (error) {
+        console.log(error);
+    }
+
+}
+
 export const followUser = (id, data) => async (dispatch) => {
     dispatch({ type: "FOLLOW_USER", data: id })
     UserApi.followUser(id, data)

@@ -15,6 +15,8 @@ const postReducer = (state = { posts: [], loading: false, error: false, uploadin
             return { ...state, loading: false, error: true };
         case "CLEAR_POSTS":
             return { ...state, posts: [] };
+        case "INVITING_SUCCESS":
+            return { ...state, posts: state.posts.map((post) => post._id === action.data._id ? action.data : post), loading: false, error: false, uploading: false };
         default:
             return state;
     }
