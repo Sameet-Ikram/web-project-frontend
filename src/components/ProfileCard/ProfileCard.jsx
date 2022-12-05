@@ -13,15 +13,25 @@ const ProfileCard = ({ location }) => {
 
     useEffect(() => {
         setStars(user.stars);
-        if (stars >= 100) {
-            setRank("Gold");
+
+        if (stars >= 100000) {
+            setRank("Eternal Sage");
+        } else if (stars >= 70000) {
+            setRank("Platinum Veteran");
+        } else if (stars >= 65000) {
+            setRank("Sapphire Veteran");
+        } else if (stars >= 60000) {
+            setRank("Diamond Veteran");
+        } else if (stars >= 50000) {
+            setRank("Golden Veteran");
+        } else if (stars >= 40000) {
+            setRank("Ruby Veteran");
+        } else if (stars >= 25000) {
+            setRank("Silver Veteran");
+        } else {
+            setRank("Newbie");
         }
-        else if (stars >= 50) {
-            setRank("Silver");
-        }
-        else if (stars >= 10) {
-            setRank("Bronze");
-        }
+
     }, [])
 
 

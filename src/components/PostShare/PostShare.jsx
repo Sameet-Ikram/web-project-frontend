@@ -56,6 +56,11 @@ const PostShare = () => {
             newPost.eventname = document.getElementById("ename").value;
             newPost.eventlocation = document.getElementById("city").value;
             newPost.poststars = document.getElementById("estars").value;
+            if (postsstars < 0 || postsstars > 5000) {
+                reset();
+                console.log("Invalid Stars");
+                return;
+            }
             newPost.datatype = "eventt";
         }
         else {
