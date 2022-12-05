@@ -24,6 +24,7 @@ export const signUp = (FormData) => async (dispatch) => {
     }
 };
 
+
 export const logOut = () => async (dispatch) => {
     dispatch({ type: "LOG_OUT" });
 }

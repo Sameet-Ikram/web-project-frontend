@@ -62,8 +62,7 @@ const EventPost = ({ data }) => {
     const handleInterest = () => {
 
         dispatch(interestPost(data._id, user._id, data.poststars));
-        // user.stars += data.poststars;
-        // dispatch({ type: "INCREASE_STARS", data: user });
+        dispatch({ type: "INCREASE_STARS", stars: user.stars + data.poststars });
         setInterested((prev) => !prev);
     };
 
